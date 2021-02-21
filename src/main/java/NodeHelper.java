@@ -26,15 +26,15 @@ public class NodeHelper {
     private static final String THRESHOLDS = "thresholds";
     private static final String NAME = "name";
     private static final String VALUE = "value";
-    private static  final ObjectMapper objectMapper = new ObjectMapper();
 
-    public static ObjectNode getSecurity(JsonNode root) {
+    public static ObjectNode getSecurity(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode security = objectMapper.createObjectNode();
         security.put(VALUE, root.path(TQI).path(WEIGHTS).path(SECURITY));
         return security;
     }
 
-    public static ObjectNode getFunctionalSyntaxValue(JsonNode root) {
+    // Functional Syntax
+    public static ObjectNode getFunctionalSyntaxValue(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode functionalSyntax = objectMapper.createObjectNode();
         functionalSyntax.put(VALUE, root.path(CHARACTERISTICS).path(SECURITY).path(WEIGHTS).path(FUNCTIONAL_SYNTAX));
         functionalSyntax.put(POSITIVE, root.path(PROPERTIES).path(FUNCTIONAL_SYNTAX).path(POSITIVE));
@@ -42,21 +42,21 @@ public class NodeHelper {
         return functionalSyntax;
     }
 
-    public static ObjectNode getFunctionalSyntaxMeasure(JsonNode root) {
+    public static ObjectNode getFunctionalSyntaxMeasure(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode measure = objectMapper.createObjectNode();
         measure.put(NAME,root.path(PROPERTIES).path(FUNCTIONAL_SYNTAX).path(MEASURE).path(NAME));
         measure.put(VALUE, root.path(PROPERTIES).path(FUNCTIONAL_SYNTAX).path(MEASURE).path(VALUE));
         return measure;
     }
 
-    public static ObjectNode getFunctionalSyntaxDiagnostics(JsonNode root) {
+    public static ObjectNode getFunctionalSyntaxDiagnostics(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode diagnostics = objectMapper.createObjectNode();
         diagnostics.put(DIAGNOSTICS, root.path(PROPERTIES).path(FUNCTIONAL_SYNTAX).path(MEASURE).path(DIAGNOSTICS));
         return diagnostics;
     }
 
     // get format info
-    public static ObjectNode getFormatValue(JsonNode root) {
+    public static ObjectNode getFormatValue(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode format = objectMapper.createObjectNode();
         format.put(VALUE, root.path(CHARACTERISTICS).path(SECURITY).path(WEIGHTS).path(FORMAT));
         format.put(POSITIVE, root.path(PROPERTIES).path(FORMAT).path(POSITIVE));
@@ -64,21 +64,21 @@ public class NodeHelper {
         return format;
     }
 
-    public static ObjectNode getFormatMeasure(JsonNode root) {
+    public static ObjectNode getFormatMeasure(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode measure = objectMapper.createObjectNode();
         measure.put(NAME,root.path(PROPERTIES).path(FORMAT).path(MEASURE).path(NAME));
         measure.put(VALUE, root.path(PROPERTIES).path(FORMAT).path(MEASURE).path(VALUE));
         return measure;
     }
 
-    public static ObjectNode getFormatDiagnostics(JsonNode root) {
+    public static ObjectNode getFormatDiagnostics(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode diagnostics = objectMapper.createObjectNode();
         diagnostics.put(DIAGNOSTICS, root.path(PROPERTIES).path(FUNCTIONAL_SYNTAX).path(MEASURE).path(DIAGNOSTICS));
         return diagnostics;
     }
 
     // get Resource Handling
-    public static ObjectNode getResourceHandling(JsonNode root) {
+    public static ObjectNode getResourceHandling(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode resourceHandling = objectMapper.createObjectNode();
         resourceHandling.put(VALUE, root.path(CHARACTERISTICS).path(SECURITY).path(WEIGHTS).path(RESOURCE_HANDLING));
         resourceHandling.put(POSITIVE, root.path(PROPERTIES).path(RESOURCE_HANDLING).path(POSITIVE));
@@ -86,21 +86,21 @@ public class NodeHelper {
         return resourceHandling;
     }
 
-    public static ObjectNode getResourceHandlingMeasure(JsonNode root) {
+    public static ObjectNode getResourceHandlingMeasure(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode measure = objectMapper.createObjectNode();
         measure.put(NAME,root.path(PROPERTIES).path(RESOURCE_HANDLING).path(MEASURE).path(NAME));
         measure.put(VALUE, root.path(PROPERTIES).path(RESOURCE_HANDLING).path(MEASURE).path(VALUE));
         return measure;
     }
 
-    public static ObjectNode getResourceHandlingDiagnostics(JsonNode root) {
+    public static ObjectNode getResourceHandlingDiagnostics(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode diagnostics = objectMapper.createObjectNode();
         diagnostics.put(DIAGNOSTICS, root.path(PROPERTIES).path(RESOURCE_HANDLING).path(MEASURE).path(DIAGNOSTICS));
         return diagnostics;
     }
 
     // get Data Type Integrity
-    public static ObjectNode getDataTypeIntegrity(JsonNode root) {
+    public static ObjectNode getDataTypeIntegrity(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode dataTypeIntegrity = objectMapper.createObjectNode();
         dataTypeIntegrity.put(VALUE, root.path(CHARACTERISTICS).path(SECURITY).path(WEIGHTS).path(DATA_TYPE_INTEGRITY));
         dataTypeIntegrity.put(POSITIVE, root.path(PROPERTIES).path(DATA_TYPE_INTEGRITY).path(POSITIVE));
@@ -108,21 +108,21 @@ public class NodeHelper {
         return dataTypeIntegrity;
     }
 
-    public static ObjectNode getDataTypeIntegrityMeasure(JsonNode root) {
+    public static ObjectNode getDataTypeIntegrityMeasure(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode measure = objectMapper.createObjectNode();
         measure.put(NAME,root.path(PROPERTIES).path(DATA_TYPE_INTEGRITY).path(MEASURE).path(NAME));
         measure.put(VALUE, root.path(PROPERTIES).path(DATA_TYPE_INTEGRITY).path(MEASURE).path(VALUE));
         return measure;
     }
 
-    public static ObjectNode getDataTypeIntegrityDiagnostics(JsonNode root) {
+    public static ObjectNode getDataTypeIntegrityDiagnostics(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode diagnostics = objectMapper.createObjectNode();
         diagnostics.put(DIAGNOSTICS, root.path(PROPERTIES).path(DATA_TYPE_INTEGRITY).path(MEASURE).path(DIAGNOSTICS));
         return diagnostics;
     }
 
     // Documentation
-    public static ObjectNode getDocumentation(JsonNode root) {
+    public static ObjectNode getDocumentation(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode documentation = objectMapper.createObjectNode();
         documentation.put(VALUE, root.path(CHARACTERISTICS).path(SECURITY).path(WEIGHTS).path(DOCUMENTATION));
         documentation.put(POSITIVE, root.path(PROPERTIES).path(DOCUMENTATION).path(POSITIVE));
@@ -130,21 +130,21 @@ public class NodeHelper {
         return documentation;
     }
 
-    public static ObjectNode getDocumentationMeasure(JsonNode root) {
+    public static ObjectNode getDocumentationMeasure(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode measure = objectMapper.createObjectNode();
         measure.put(NAME,root.path(PROPERTIES).path(DOCUMENTATION).path(MEASURE).path(NAME));
         measure.put(VALUE, root.path(PROPERTIES).path(DOCUMENTATION).path(MEASURE).path(VALUE));
         return measure;
     }
 
-    public static ObjectNode getDocumentationDiagnostics(JsonNode root) {
+    public static ObjectNode getDocumentationDiagnostics(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode diagnostics = objectMapper.createObjectNode();
         diagnostics.put(DIAGNOSTICS, root.path(PROPERTIES).path(DOCUMENTATION).path(MEASURE).path(DIAGNOSTICS));
         return diagnostics;
     }
 
     // Exception Handling
-    public static ObjectNode getExceptionHandling(JsonNode root) {
+    public static ObjectNode getExceptionHandling(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode documentation = objectMapper.createObjectNode();
         documentation.put(VALUE, root.path(CHARACTERISTICS).path(SECURITY).path(WEIGHTS).path(EXCEPTION_HANDLING));
         documentation.put(POSITIVE, root.path(PROPERTIES).path(EXCEPTION_HANDLING).path(POSITIVE));
@@ -152,21 +152,21 @@ public class NodeHelper {
         return documentation;
     }
 
-    public static ObjectNode getExceptionHandlingMeasure(JsonNode root) {
+    public static ObjectNode getExceptionHandlingMeasure(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode measure = objectMapper.createObjectNode();
         measure.put(NAME,root.path(PROPERTIES).path(EXCEPTION_HANDLING).path(MEASURE).path(NAME));
         measure.put(VALUE, root.path(PROPERTIES).path(EXCEPTION_HANDLING).path(MEASURE).path(VALUE));
         return measure;
     }
 
-    public static ObjectNode getExceptionHandlingDiagnostics(JsonNode root) {
+    public static ObjectNode getExceptionHandlingDiagnostics(JsonNode root, ObjectMapper objectMapper ) {
         ObjectNode diagnostics = objectMapper.createObjectNode();
         diagnostics.put(DIAGNOSTICS, root.path(PROPERTIES).path(EXCEPTION_HANDLING).path(MEASURE).path(DIAGNOSTICS));
         return diagnostics;
     }
 
     // Encryption
-    public static ObjectNode getEncryption(JsonNode root) {
+    public static ObjectNode getEncryption(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode documentation = objectMapper.createObjectNode();
         documentation.put(VALUE, root.path(CHARACTERISTICS).path(SECURITY).path(WEIGHTS).path(ENCRYPTION));
         documentation.put(POSITIVE, root.path(PROPERTIES).path(ENCRYPTION).path(POSITIVE));
@@ -174,21 +174,21 @@ public class NodeHelper {
         return documentation;
     }
 
-    public static ObjectNode getEncryptionMeasure(JsonNode root) {
+    public static ObjectNode getEncryptionMeasure(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode measure = objectMapper.createObjectNode();
         measure.put(NAME,root.path(PROPERTIES).path(ENCRYPTION).path(MEASURE).path(NAME));
         measure.put(VALUE, root.path(PROPERTIES).path(ENCRYPTION).path(MEASURE).path(VALUE));
         return measure;
     }
 
-    public static ObjectNode getEncryptionDiagnostics(JsonNode root) {
+    public static ObjectNode getEncryptionDiagnostics(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode diagnostics = objectMapper.createObjectNode();
         diagnostics.put(DIAGNOSTICS, root.path(PROPERTIES).path(ENCRYPTION).path(MEASURE).path(DIAGNOSTICS));
         return diagnostics;
     }
 
     // Input Output Handling
-    public static ObjectNode getInputOutputHandling(JsonNode root) {
+    public static ObjectNode getInputOutputHandling(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode documentation = objectMapper.createObjectNode();
         documentation.put(VALUE, root.path(CHARACTERISTICS).path(SECURITY).path(WEIGHTS).path(INPUT_OUTPUT_HANDLING));
         documentation.put(POSITIVE, root.path(PROPERTIES).path(INPUT_OUTPUT_HANDLING).path(POSITIVE));
@@ -196,21 +196,21 @@ public class NodeHelper {
         return documentation;
     }
 
-    public static ObjectNode getInputOutputHandlingMeasure(JsonNode root) {
+    public static ObjectNode getInputOutputHandlingMeasure(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode measure = objectMapper.createObjectNode();
         measure.put(NAME,root.path(PROPERTIES).path(INPUT_OUTPUT_HANDLING).path(MEASURE).path(NAME));
         measure.put(VALUE, root.path(PROPERTIES).path(INPUT_OUTPUT_HANDLING).path(MEASURE).path(VALUE));
         return measure;
     }
 
-    public static ObjectNode getInputOutputHandlingDiagnostics(JsonNode root) {
+    public static ObjectNode getInputOutputHandlingDiagnostics(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode diagnostics = objectMapper.createObjectNode();
         diagnostics.put(DIAGNOSTICS, root.path(PROPERTIES).path(INPUT_OUTPUT_HANDLING).path(MEASURE).path(DIAGNOSTICS));
         return diagnostics;
     }
 
     // Structure
-    public static ObjectNode getStructure(JsonNode root) {
+    public static ObjectNode getStructure(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode documentation = objectMapper.createObjectNode();
         documentation.put(VALUE, root.path(CHARACTERISTICS).path(SECURITY).path(WEIGHTS).path(STRUCTURE));
         documentation.put(POSITIVE, root.path(PROPERTIES).path(STRUCTURE).path(POSITIVE));
@@ -218,23 +218,21 @@ public class NodeHelper {
         return documentation;
     }
 
-    public static ObjectNode getStructureMeasure(JsonNode root) {
+    public static ObjectNode getStructureMeasure(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode measure = objectMapper.createObjectNode();
         measure.put(NAME,root.path(PROPERTIES).path(STRUCTURE).path(MEASURE).path(NAME));
         measure.put(VALUE, root.path(PROPERTIES).path(STRUCTURE).path(MEASURE).path(VALUE));
         return measure;
     }
 
-    public static ObjectNode getStructureDiagnostics(JsonNode root) {
+    public static ObjectNode getStructureDiagnostics(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode diagnostics = objectMapper.createObjectNode();
         diagnostics.put(DIAGNOSTICS, root.path(PROPERTIES).path(STRUCTURE).path(MEASURE).path(DIAGNOSTICS));
         return diagnostics;
     }
 
     // Functional Semantics
-
-    // Structure
-    public static ObjectNode getFunctionalSemantics(JsonNode root) {
+    public static ObjectNode getFunctionalSemantics(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode functionalSemantics = objectMapper.createObjectNode();
         functionalSemantics.put(VALUE, root.path(CHARACTERISTICS).path(SECURITY).path(WEIGHTS).path(FUNCTIONAL_SEMANTICS));
         functionalSemantics.put(POSITIVE, root.path(PROPERTIES).path(FUNCTIONAL_SEMANTICS).path(POSITIVE));
@@ -242,14 +240,14 @@ public class NodeHelper {
         return functionalSemantics;
     }
 
-    public static ObjectNode getFunctionalSemanticsMeasure(JsonNode root) {
+    public static ObjectNode getFunctionalSemanticsMeasure(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode measure = objectMapper.createObjectNode();
         measure.put(NAME,root.path(PROPERTIES).path(FUNCTIONAL_SEMANTICS).path(MEASURE).path(NAME));
         measure.put(VALUE, root.path(PROPERTIES).path(FUNCTIONAL_SEMANTICS).path(MEASURE).path(VALUE));
         return measure;
     }
 
-    public static ObjectNode getFunctionalSemanticsDiagnostics(JsonNode root) {
+    public static ObjectNode getFunctionalSemanticsDiagnostics(JsonNode root, ObjectMapper objectMapper) {
         ObjectNode diagnostics = objectMapper.createObjectNode();
         diagnostics.put(DIAGNOSTICS, root.path(PROPERTIES).path(FUNCTIONAL_SEMANTICS).path(MEASURE).path(DIAGNOSTICS));
         return diagnostics;
